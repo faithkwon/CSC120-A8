@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class House extends Building implements HouseRequirements {
 
-  // House attributes
+  /* House attributes */
   private ArrayList<Student> residents; 
   private boolean hasDiningRoom;
   private boolean hasElevator;
@@ -23,7 +23,14 @@ public class House extends Building implements HouseRequirements {
     System.out.println("You have built a house: 🏠");
   }
 
-  /* overloading constructor -- includes a nickname */
+  /**
+   * Overloaded constructor -- includes a nickname
+   * @param name name of the house
+   * @param address location of the house
+   * @param nFloors number of floors in the house
+   * @param hasDiningRoom whether or not the house has a dining room
+   * @param nickname house's nickname
+   */
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator, String nickname) {
     super(name, address, nFloors);
     this.residents = new ArrayList<Student>();
@@ -57,7 +64,10 @@ public class House extends Building implements HouseRequirements {
     residents.add(s);
   }
 
-  /* overloading moveIn -- takes in a list of students instead of just one */
+  /**
+   * overloading moveIn -- takes in a list of students instead of just one
+   * @param s ArrayList of students moving in
+   */
   public void moveIn(ArrayList<Student> s) {
     residents.addAll(s);
   }
@@ -100,7 +110,10 @@ public class House extends Building implements HouseRequirements {
     System.out.println(" + moveIn(s)\n + moveOut(s)\n + isResident(s)");
   }
 
-  /* overriding goToFloor */
+  /**
+   * Overriding goToFloor
+   * @param n # of floors to clumb
+   */
   public void goToFloor(int n) {
     if (hasElevator == true) {
       super.goToFloor(n);
@@ -113,7 +126,7 @@ public class House extends Building implements HouseRequirements {
     }
   }
 
-  // Main method
+  /* Main method */
   public static void main(String[] args) {
     House kingHouse = new House("King House", "180 Elm", 4, true, true);
     Student faith = new Student("Faith", "99XXXX", 2027);

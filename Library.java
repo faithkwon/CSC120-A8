@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Library extends Building implements LibraryRequirements {
 
-  // Library attributes
+  /* Library attributes */
   private Hashtable<String, Boolean> collection;
   private boolean hasElevator;
 
@@ -28,7 +28,10 @@ public class Library extends Building implements LibraryRequirements {
     collection.put(title, true);
   }
 
-  /* overloading addTitle -- adding an ArrayList of titles to collection instead of just one */
+  /**
+   * overloading addTitle -- adding an ArrayList of titles to collection instead of just one
+   * @param titles ArrayList of books to add to the collection
+   */
   public void addTitle(ArrayList<String> titles) {
     for (int i = 0; i < titles.size(); i++) {
       collection.put(titles.get(i), true);
@@ -38,6 +41,7 @@ public class Library extends Building implements LibraryRequirements {
   /**
    * Removes a title from the collection
    * @param title name of the book
+   * @return name of the book
    */
   public String removeTitle(String title) {
     collection.remove(title);
@@ -52,7 +56,10 @@ public class Library extends Building implements LibraryRequirements {
     collection.replace(title, true, false);
   }
 
-  /* overloading checkOut -- checking out multiple titles instead of just one */
+  /**
+   * overloading checkOut -- checking out multiple titles instead of just one
+   * @param titles ArrayList of books to check out
+   */
   public void checkOut(ArrayList<String> titles) {
     for (int i = 0; i < titles.size(); i++) {
       collection.replace(titles.get(i), true, false);
@@ -70,6 +77,7 @@ public class Library extends Building implements LibraryRequirements {
   /**
    * Checks if the collection has a specific title
    * @param title name of the book
+   * @return T/F if the collection has the book
    */
   public boolean containsTitle(String title) {
     return collection.containsKey(title);
@@ -78,6 +86,7 @@ public class Library extends Building implements LibraryRequirements {
   /**
    * Checks if a specific title is available
    * @param title name of the book
+   * @return T/F if the book is available to check out
    */
   public boolean isAvailable(String title) {
     return collection.get(title) == true;
@@ -94,7 +103,10 @@ public class Library extends Building implements LibraryRequirements {
     System.out.println(" + addTitle(title)\n + removeTitle(title)\n + checkOut(title)\n + returnBook(title)\n + containsTitle(title)\n + isAvailable(title)\n + printCollection()");
   }
 
-  /* overriding goToFloor */
+  /**
+   * Overriding goToFloor
+   * @param n # of floors to climb
+   */
   public void goToFloor(int n) {
     if (hasElevator == true) {
       super.goToFloor(n);
@@ -107,7 +119,7 @@ public class Library extends Building implements LibraryRequirements {
     }
   }
   
-  // Main method
+  /* Main method */
   public static void main(String[] args) {
     Library lib = new Library("Neilson", "Smith College", 4, true);
     

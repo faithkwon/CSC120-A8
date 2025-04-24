@@ -2,7 +2,7 @@
 
 public class Cafe extends Building implements CafeRequirements {
 
-    // Cafe attributes
+    /* Cafe attributes */
     private int nCoffeeOunces;
     private int nSugarPackets;
     private int nCreams;
@@ -27,7 +27,15 @@ public class Cafe extends Building implements CafeRequirements {
         System.out.println("You have built a cafe: ☕");
     }
 
-    /* overloading constructor -- nFloors defaulted to 1 */
+    /**
+     * Overloaded constructor
+     * @param name name of the cafe
+     * @param address location of the cafe
+     * @param nCoffeeOunces how much coffee the cafe has in stock
+     * @param nSugarPackets how much sugar the cafe has in stock
+     * @param nCreams how much cream the cafe has in stock
+     * @param nCups how many cups the cafe has in stock
+     */
     public Cafe(String name, String address, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
         super(name, address);
         this.nCoffeeOunces = nCoffeeOunces;
@@ -73,7 +81,10 @@ public class Cafe extends Building implements CafeRequirements {
         }
     }
 
-    /* overloading sellCoffee -- black coffee */
+    /**
+     * Overloading sellCoffee -- if they order a black coffee
+     * @param size size of the coffee ordered
+     */
     public void sellCoffee(int size) {
         if (this.nCoffeeOunces > size) {
             this.nCoffeeOunces -= size;
@@ -121,12 +132,18 @@ public class Cafe extends Building implements CafeRequirements {
         return this.getName() + " has " + nCoffeeOunces + "oz of coffee, " + nSugarPackets + " sugar packets, " + nCreams + " creams, and " + nCups + " cups.";
     }
 
-    /* overriding goToFloor */
+    /**
+     * Overriding goToFloor -- throws an error when somebody wants to go beyond floor 1
+     * @param n number of floors to climb
+     */
     public void goToFloor(int n) {
         throw new RuntimeException("You cannot go beyond floor 1.");
     }
     
-    // Main method
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         Cafe compass = new Cafe("Compass", "Smith College", 2, 20, 10, 10, 10);
         Cafe cc = new Cafe("CC Cafe", "Smith College", 20, 10, 10, 10);
